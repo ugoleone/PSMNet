@@ -11,6 +11,7 @@ import numpy as np
 import time
 import math
 from dataloader import listflowfile as lt
+from dataloader import KITTIloader2015 as ls
 from dataloader import SecenFlowLoader as DA
 from models import *
 
@@ -38,7 +39,7 @@ torch.manual_seed(args.seed)
 if args.cuda:
     torch.cuda.manual_seed(args.seed)
 
-all_left_img, all_right_img, all_left_disp, test_left_img, test_right_img, test_left_disp = lt.dataloader(args.datapath)
+all_left_img, all_right_img, all_left_disp, test_left_img, test_right_img, test_left_disp = ls.dataloader(args.datapath)
 
 
 TestImgLoader = torch.utils.data.DataLoader(
