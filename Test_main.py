@@ -12,7 +12,7 @@ import time
 import math
 from dataloader import listflowfile as lt
 from dataloader import KITTIloader2015 as ls
-from dataloader import SecenFlowLoader as DA
+from dataloader import KITTILoader as DA
 from models import *
 
 parser = argparse.ArgumentParser(description='PSMNet')
