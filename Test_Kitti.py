@@ -115,9 +115,9 @@ def adjust_learning_rate(optimizer, epoch):
 
 
 def main():
-	max_acc=0
-	max_epo=0
-	start_full_time = time.time()
+    max_acc=0
+    max_epo=0
+    start_full_time = time.time()
 
     for epoch in range(1, args.epochs+1):
         total_train_loss = 0
@@ -129,9 +129,9 @@ def main():
             print('Iter %d 3-px error in val = %.3f' %(batch_idx, test_loss*100))
             total_test_loss += test_loss
 
-	    print('epoch %d total 3-px error in val = %.3f' %(epoch, total_test_loss/len(TestImgLoader)*100))
-	    if total_test_loss/len(TestImgLoader)*100 > max_acc:
-	        max_acc = total_test_loss/len(TestImgLoader)*100
+        print('epoch %d total 3-px error in val = %.3f' %(epoch, total_test_loss/len(TestImgLoader)*100))
+        if total_test_loss/len(TestImgLoader)*100 > max_acc:
+            max_acc = total_test_loss/len(TestImgLoader)*100
             max_epo = epoch
         print('MAX epoch %d total test error = %.3f' %(max_epo, max_acc))
 
@@ -143,7 +143,7 @@ def main():
             'train_loss': total_train_loss/len(TrainImgLoader),
             'test_loss': total_test_loss/len(TestImgLoader)*100,
         }, savefilename)
-	
+    
         print('full finetune time = %.2f HR' %((time.time() - start_full_time)/3600))
     print(max_epo)
     print(max_acc)
