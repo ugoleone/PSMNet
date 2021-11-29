@@ -119,17 +119,16 @@ def main():
 	max_epo=0
 	start_full_time = time.time()
 
-	for epoch in range(1, args.epochs+1):
-	   total_train_loss = 0
-	   total_test_loss = 0
-	   adjust_learning_rate(optimizer,epoch)
-           
+    for epoch in range(1, args.epochs+1):
+	    total_train_loss = 0
+	    total_test_loss = 0
+	    adjust_learning_rate(optimizer,epoch)
+   
         ## Test ##
         for batch_idx, (imgL, imgR, disp_L) in enumerate(TestImgLoader):
             test_loss = test(imgL,imgR, disp_L)
             print('Iter %d 3-px error in val = %.3f' %(batch_idx, test_loss*100))
             total_test_loss += test_loss
-
 
 	    print('epoch %d total 3-px error in val = %.3f' %(epoch, total_test_loss/len(TestImgLoader)*100))
 	    if total_test_loss/len(TestImgLoader)*100 > max_acc:
@@ -147,8 +146,8 @@ def main():
         }, savefilename)
 	
         print('full finetune time = %.2f HR' %((time.time() - start_full_time)/3600))
-	print(max_epo)
-	print(max_acc)
+    print(max_epo)
+    print(max_acc)
 
 
 if __name__ == '__main__':
