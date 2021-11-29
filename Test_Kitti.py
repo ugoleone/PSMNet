@@ -120,10 +120,9 @@ def main():
 	start_full_time = time.time()
 
     for epoch in range(1, args.epochs+1):
-	    total_train_loss = 0
-	    total_test_loss = 0
-	    adjust_learning_rate(optimizer,epoch)
-   
+        total_train_loss = 0
+        total_test_loss = 0
+        adjust_learning_rate(optimizer,epoch)
         ## Test ##
         for batch_idx, (imgL, imgR, disp_L) in enumerate(TestImgLoader):
             test_loss = test(imgL,imgR, disp_L)
