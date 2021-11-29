@@ -131,9 +131,9 @@ def main():
 
 	    print('epoch %d total 3-px error in val = %.3f' %(epoch, total_test_loss/len(TestImgLoader)*100))
 	    if total_test_loss/len(TestImgLoader)*100 > max_acc:
-		    max_acc = total_test_loss/len(TestImgLoader)*100
-	        max_epo = epoch
-	    print('MAX epoch %d total test error = %.3f' %(max_epo, max_acc))
+	        max_acc = total_test_loss/len(TestImgLoader)*100
+            max_epo = epoch
+        print('MAX epoch %d total test error = %.3f' %(max_epo, max_acc))
 
         #SAVE
         savefilename = args.savemodel+'finetune_'+str(epoch)+'.tar'
