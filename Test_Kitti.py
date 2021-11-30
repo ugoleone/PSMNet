@@ -98,6 +98,7 @@ def test(imgL,imgR,disp_true):
         #computing 3-px error#
         true_disp = copy.deepcopy(disp_true)
         index = np.argwhere(true_disp>0)
+        torch.squeeze(pred_disp)
         print(true_disp.shape)
         print(pred_disp.shape)
         disp_true[index[0][:], index[1][:], index[2][:]] = np.abs(true_disp[index[0][:], index[1][:], index[2][:]]-pred_disp[index[0][:], index[1][:], index[2][:]])
