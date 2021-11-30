@@ -53,6 +53,7 @@ elif args.datatype == '2012':
    from dataloader import KITTIloader2012 as ls
 
 all_left_img, all_right_img, all_left_disp, test_left_img, test_right_img, test_left_disp = ls.dataloader(args.datapath)
+print(args.datapath)
 
 TrainImgLoader = torch.utils.data.DataLoader(
          DA.myImageFloder(all_left_img,all_right_img,all_left_disp, True), 
@@ -98,7 +99,7 @@ def test(imgL,imgR,disp_true):
         #computing 3-px error#
         true_disp = copy.deepcopy(disp_true)
         index = np.argwhere(true_disp>0)
-        torch.squeeze(pred_disp)
+        pred_disp = torch.squeeze(pred_disp)
         print(true_disp.shape)
         print(pred_disp.shape)
         disp_true[index[0][:], index[1][:], index[2][:]] = np.abs(true_disp[index[0][:], index[1][:], index[2][:]]-pred_disp[index[0][:], index[1][:], index[2][:]])
